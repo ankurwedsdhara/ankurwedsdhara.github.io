@@ -9,7 +9,7 @@ jQuery(function($) {
   // Create a countdown instance. Change the launchDay according to your needs.
   // The month ranges from 0 to 11. I specify the month from 1 to 12 and manually subtract the 1.
   // Thus the launchDay below denotes 7 May, 2014.
-  var launchDay = new Date(2015, 10-1, 14);
+  var launchDay = new Date(2015, 6-1, 5);
   $('#timer').countdown({
   until: launchDay
   });
