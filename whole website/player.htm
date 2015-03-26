@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en" class="ie8">
+    <head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=1024,maximum-scale=1.0">
+<link rel="dns-prefetch" href="//player.vimeo.com">
+<link rel="dns-prefetch" href="//i.vimeocdn.com">
+<meta property="fb:app_id" content="19884028963">
+
+
+    <meta name="description" content="Vimeo is the home for high-quality videos and the people who love them.">
+
+
+
+    <link rel="canonical" href="/player">
+
+    <link rel="shortcut icon" data-play="https://i.vimeocdn.com/favicon/play_32" data-pause="https://i.vimeocdn.com/favicon/pause_32" href="https://f.vimeocdn.com/images_v6/favicon_32.ico" />
+    <link rel="apple-touch-icon-precomposed" media="(resolution: 326dpi)" href="https://f.vimeocdn.com/images_v6/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon-precomposed" media="(resolution: 163dpi)" href="https://f.vimeocdn.com/images_v6/apple-touch-icon-57.png">
+    <link rel="apple-touch-icon-precomposed" media="(resolution: 132dpi)" href="https://f.vimeocdn.com/images_v6/apple-touch-icon-72.png">
+
+<link rel="search" type="application/opensearchdescription+xml" href="/search/opensearch.xml" title="Vimeo search">
+<link rel="publisher" href="https://google.com/+vimeo">
+<link rel="logo" type="image/svg" href="https://f.vimeocdn.com/logo.svg">
+        <title>The Vimeo Player</title>
+                    <link rel="stylesheet" href="https://f.vimeocdn.com/styles/css_opt/global/icon_fonts.min.css?8ffaf96">
+
+    <link rel="stylesheet" href="https://f.vimeocdn.com/styles/css_opt/global_combined.min.css?74519b9d">
+    <link rel="stylesheet" href="https://f.vimeocdn.com/styles/css_opt/player_page/player_page_combined.min.css?746d3de3">
+
+
+                    <style>
+            #ribbon, .body_ribbon, .svg_ribbon, .default_lightbox header>h1, .default_lightbox header>h6, .default_lightbox header>.lightbox_heading, .default_lightbox .masthead, .default_lightbox.feather:before, .upload_progress .inner .bar, .vod_lightbox:before { background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiPgogICAgICAgICAgICA8cmVjdCB4PSIwIiB3aWR0aD0iOTUiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2U2NTc5MCIvPgogICAgICAgICAgICA8cmVjdCB4PSI5NSIgd2lkdGg9IjMiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6Izk5M2E2MCIvPgogICAgICAgICAgICA8cmVjdCB4PSI5OCIgd2lkdGg9IjE0IiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiNjZDRlODAiLz4KICAgICAgICAgICAgPHJlY3QgeD0iMTEyIiB3aWR0aD0iNTUiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2ZiN2I3NCIvPgogICAgICAgICAgICA8cmVjdCB4PSIxNjciIHdpZHRoPSIyNCIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojZTY2ZTllIi8+CiAgICAgICAgICAgIDxyZWN0IHg9IjE5MSIgd2lkdGg9IjYiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2ZiN2I3NCIvPgogICAgICAgICAgICA8cmVjdCB4PSIxOTciIHdpZHRoPSI0IiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiNmZWFmOGQiLz4KICAgICAgICAgICAgPHJlY3QgeD0iMjAxIiB3aWR0aD0iNyIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojZmI3Yjc0Ii8+CiAgICAgICAgICAgIDxyZWN0IHg9IjIwOCIgd2lkdGg9IjciIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2UwNTE1MSIvPgogICAgICAgICAgICA8cmVjdCB4PSIyMTUiIHdpZHRoPSIzIiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiNmYzU3NWUiLz4KICAgICAgICAgICAgPHJlY3QgeD0iMjE4IiB3aWR0aD0iMSIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojZmVhZjhkIi8+CiAgICAgICAgICAgIDxyZWN0IHg9IjIxOSIgd2lkdGg9IjM2IiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiNmYjdiNzQiLz4KICAgICAgICAgICAgPHJlY3QgeD0iMjU1IiB3aWR0aD0iMTgiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2UzNGY1NyIvPgogICAgICAgICAgICA8cmVjdCB4PSIyNzMiIHdpZHRoPSIyMiIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojZmVhZjhkIi8+CiAgICAgICAgICAgIDxyZWN0IHg9IjI5NSIgd2lkdGg9Ijc3IiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiNmYzU3NWUiLz4KICAgICAgICAgICAgPHJlY3QgeD0iMzcyIiB3aWR0aD0iMTciIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2ZiN2I3NCIvPgogICAgICAgICAgICA8cmVjdCB4PSIzODkiIHdpZHRoPSI4MyIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojZmVhZjhkIi8+CiAgICAgICAgICAgIDxyZWN0IHg9IjQ3MiIgd2lkdGg9IjI4IiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiNlMDUxNTEiLz4KICAgIDwvc3ZnPgo=) repeat-x top left; }
+        </style>
+        <style>#logo_holder, .site_header .menu_logo_holder { background:url(https://f.vimeocdn.com/logo.svg) no-repeat; background-size:140px 40px; width:140px; height:40px; text-indent: -9999px; } .site_header .menu_logo_holder_multiplex {background-size:304px 33px; width:304px; height:33px;</style>
+            <link rel="subresource" href="https://f.vimeocdn.com/p/2.5.29/js/player.js">
+        <link rel="subresource" href="https://f.vimeocdn.com/p/2.5.29/css/player.css">
+        <script>
+        var playerAssetUrls = {"js":"https:\/\/f.vimeocdn.com\/p\/2.5.29\/js\/player.js","moog":"https:\/\/f.vimeocdn.com\/p\/flash\/moogaloop\/6.0.37\/moogaloop.swf","moog_js":"https:\/\/f.vimeocdn.com\/p\/2.5.29\/js\/moogaloop.js","css":"https:\/\/f.vimeocdn.com\/p\/2.5.29\/css\/player.css","player_url":"player.vimeo.com"};
+    </script>
+            <script>
+            var GlobalNotifications = {"13":{"id":13,"message":"Your browser is out of date and may not support Vimeo's features. <a href=\"https:\/\/vimeo.com\/help\/faq\/vimeo-membership\/getting-help#why-is-vimeo-telling-me-to-upgrade-my-browser\">Learn how to upgrade<\/a>","ttl":7}};
+        </script>
+        <script>var date = new Date();date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);document.cookie = 'vuid=' + encodeURIComponent('572595996.1808960508') + '; domain=.vimeo.com; path=/; expires= ' + date.toGMTString();</script>
+        
+
+    <script>
+        var googletag = googletag || {},
+            gptadslots = [];
+        googletag.cmd = googletag.cmd || [];
+
+        (function() {
+            var gads = document.createElement('script'),
+                useSSL = 'https:' == document.location.protocol,
+                node;
+            gads.async = true;
+            gads.type = 'text/javascript';
+            gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+            node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+
+        googletag.cmd.push(function() {
+            
+                        googletag.pubads().setTargeting('sec', ['false']);
+
+            googletag.pubads().setTargeting('logged_in', ['false']);
+
+            googletag.pubads().enableAsyncRendering();
+            googletag.enableServices();
+        });
+    </script>
+
+
+
+
+    </head>
+    <!-- Force any HTML comments inject by third parties to close -->
+    <body class="break_layout ie8">
+        <div id="wrap">
+            
+            <div id="ribbon"></div>
+
+            
+            <div id="main">
+                <div id="menu_wrapper">
+                    <div id="brozar_toggle_wrapper" class="en"></div>
+<header id="site_header" class="nocontent">
+    <div class="container clearfix">
+        <a id="logo" href="/" title="Go to the home page">
+            <div id="logo_holder">Vimeo</div>
+        </a>
+        <nav class="en">
+            <ul id="menu" class="menu clearfix">
+                                    <li class="join">
+                        <a href="/join" class="join" data-ga-event-click="menu|join|top">Join</a>
+                    </li>
+                    <li class="login">
+                        <a href="/log_in" data-lightbox class="login" data-ga-event-click="menu|login|top">Log In</a>
+                    </li>
+                    <li class="create subnav">
+                        <a href="/create" data-ga-event-click="menu|create|top">Create</a>
+                        <ul data-mobile-menu="Back">
+                            <li>
+                                <a href="/videoschool" data-ga-event-click="menu|videoschool|create">
+                                    <strong>Video School</strong>
+                                    <span> Learn how to make better videos.</span>
+                                </a>
+                            </li>
+                            <li class="music">
+                                <a href="/musicstore" data-ga-event-click="menu|musicstore|create">
+                                    <strong>Music Store</strong>
+                                    <span> Get free and affordable licensed tracks.</span>
+                                </a>
+                            </li>
+                            <li>
+                                  <a href="http://cameo.tv/explore" target=“_blank” data-ga-event-click="menu|cameo|create">
+                                      <strong>Cameo <span class="badge_new">New!</span></strong>
+                                   <span>Create cinematic videos on your phone.</span>
+                                  </a>
+                              </li>
+                            <li>
+                                <a href="/creativecommons" data-ga-event-click="menu|createivecommons|create">
+                                    <strong>Creative Commons</strong>
+                                    <span> Find licensed videos on Vimeo.</span>
+                                </a>
+                            </li>
+                            <li class="creators">
+                                <a href="/creatorservices" data-ga-event-click="menu|creatorservices|create">
+                                    <strong>Creator Services</strong>
+                                    <span>Make money by making video.</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="watch subnav">
+                        <a href="/watch" data-ga-event-click="menu|watch|top">Watch</a>
+                        <ul data-mobile-menu="Back">
+                            <li>
+                                <a href="/staffpicks" data-ga-event-click="menu|staffpicks|watch">
+                                    <strong>Staff Picks</strong>
+                                    <span> Hand-picked videos we like</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ondemand" data-ga-event-click="menu|ondemand|watch">
+                                    <strong>On Demand <span class="badge_new">New!</span></strong>
+                                    <span>Watch movies, series, and more.</span>
+                                </a>
+                            </li>
+                            <li class="categories">
+                                <a href="/categories" data-ga-event-click="menu|categories|watch">
+                                    <strong>Categories</strong>
+                                    <span> A simple way to browse our catalog of videos.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/channels" data-ga-event-click="menu|channels|watch">
+                                    <strong>Channels</strong>
+                                    <span> Video showcases curated by members.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/groups" data-ga-event-click="menu|groups|watch">
+                                    <strong>Groups</strong>
+                                    <span> Join other members to watch and discuss.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/couchmode" data-ga-event-click="menu|couchmode|watch">
+                                    <strong>Couch Mode</strong>
+                                    <span>Lean back and enjoy the Vimeo.</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                                            <li class="upload">
+                            <a href="/upload" data-ga-event-click="button|navbar_upload|upload_v6">Upload</a>
+                        </li>
+                                                </ul>
+        </nav>
+
+        <form action="/search" method="get" id="search_form" class="clearfix">
+            <div id="search_holder">
+                <input type="text" id="search_field" name="q" value="" title="Enter search term" placeholder="Search" data-validators="required" data-search-engine="oracle">
+                <input type="text" id="search_suggest" value="" placeholder="" disabled>
+                <input type="submit" value="s" data-submit-text="s" class="btn_search iconify" title="Search">
+            </div>
+        </form>
+    </div>
+</header>
+<div class="clear"></div>
+
+
+                </div>
+
+                <div id="content">
+                    
+<div class="inner_wrap video_container video_container_fixed js-video_section_fixed hide"></div>
+
+<div class="inner_wrap video_container title_card out_of_view js-video_jump_point" data-spy>
+    <video class="video js-video_source" width="1080" height="607" autoplay muted loop>
+                    <source src="//secure-c.vimeocdn.com/p/video/player_page_sd.webm" type="video/webm">
+                <source src="//player.vimeo.com/external/70787330.sd.mp4?s=04b6cf8be00df6fe916f3d47bc9a673a" type="video/mp4">
+    </video>
+
+    <div class="video_container js-video_section_1">
+        <div class="title_text">
+            <h1 class="text_replace player_text flipUpX" data-animate>The Vimeo Player</h1>
+            <div class="diamond_divider">
+                <b></b>
+            </div>
+            <h2 class="watch_in_amazement fade_up">Watch in amazement.</h2>
+        </div>
+    </div>
+</div>
+
+<div class="intro_wrapper">
+    <div class="semper-lude js-semper_lude out_of_view" data-spy data-animate>
+        <div class="ship">
+            <div class="circle"></div>
+        </div>
+    </div>
+
+    <div class="intro_top"></div>
+
+    <section class="intro content_area out_of_view" data-spy>
+        <div class="width_wrap">
+            <h1 class="text_replace fade_up">Our player has a single goal: make your videos look amazing, anywhere they appear.</h1>
+        </div>
+        <div class="js-hex_video_container hexagon_video"></div>
+        <div class="hex_player js-hex_tween" data-spy>
+            <svg xmlns="http://www.w3.org/2000/svg" height="675" width="580">
+                <linearGradient id="g591" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop stop-color="#FEA98A" offset="0"></stop>
+                    <stop stop-color="#D05080" offset="1"></stop>
+                </linearGradient>
+                <clipPath id="hex_2">
+                    <polygon id="hex_2_path" fill="none" stroke="#003F19" stroke-width="60" stroke-miterlimit="10" points="291,60 523,200 523,467 291,607 59,467 59,200"></polygon>
+                </clipPath>
+                <polygon fill="none" id="border_path" stroke="url(#g591)" stroke-width="60" stroke-miterlimit="10" points="291,60 523,200 523,467 291,607 59,467 59,200"></polygon>
+
+                <image id="hex_player" clip-path="url(#hex_2)" height="100%" width="100%" xlink:href="https://f.vimeocdn.com/images_v6/player_page/clip_thumb_sox.jpg" preserveAspectRatio="xMidYMid slice"></image>
+            </svg>
+        </div>
+
+        <button tabindex="20" class="play rounded-box state-paused morphed_play_button js-play_button" title="Play" data-title-play="Play" data-title-pause="Pause" aria-label="Play">
+            <span class="play-icon">
+                <svg viewBox="0 0 20 20" preserveAspectRatio="xMidYMid">
+                    <polygon class="fill" points="1,0 20,10 1,20"></polygon>
+                </svg>
+            </span>
+        </button>
+
+    </section>
+
+    <div class="intro_bottom"></div>
+</div>
+
+<div class="inner_wrap video_container video_watching js-video_canvas_spy" data-spy>
+    <canvas class="video js-video_canvas" width="1080" height="607"></canvas>
+    <h1 class="text_replace player_text flipUpX" data-animate>The Best Way to Watch</h1>
+</div>
+
+<section class="watching content_area overflow_hidden">
+    <div class="responsive width_wrap">
+        <h3 class="text_replace fade_up" data-spy>Ridiculously responsive</h3>
+        <p>The player defaults to HTML5 to provide the most elegant viewing experience on desktop, mobile, and tablet. It responds to its locations to dynamically load design elements and assure optimal viewing.</p>
+        <ul id="devices" data-spy>
+            <li class="imac">
+                <canvas class="js-device_video_canvas" width="434" height="244"></canvas>
+            </li>
+            <li class="ipad">
+                <canvas class="js-device_video_canvas" width="362" height="159"></canvas>
+            </li>
+            <li class="lumia">
+                <canvas class="js-device_video_canvas" width="148" height="178"></canvas>
+            </li>
+            <li class="galaxy">
+                <canvas class="js-device_video_canvas" width="146" height="106"></canvas>
+            </li>
+            <li class="iphone">
+                <canvas class="js-device_video_canvas" width="132" height="78"></canvas>
+            </li>
+        </ul>
+    </div>
+
+    <div class="beautiful js-beautiful_spy" data-spy>
+        <div class="clip_thumbnail js-clip_thumbnail"></div>
+        <div class="width_wrap">
+            <div class="copy">
+                <h3 class="text_replace">Beyond Beautiful</h3>
+                <p>Your videos look better on Vimeo because we respect them. We play them in the highest quality, showcase them in a clean design, and never put ads before, after, or on top of them.</p>
+            </div>
+        </div>
+    </div>
+
+    <div data-spy>
+        <div class="fast clearfix">
+            <img src="" data-src="https://f.vimeocdn.com/images_v6/player_page/explosion.gif" alt="" class="hide explosion js-explosion">
+            <div id="speedometer_wrap" class="speedometer_wrap">
+                <div class="speedometer">
+                    <div class="needle"></div>
+                    <div class="diamond"></div>
+                    <div class="bg"></div>
+                </div>
+            </div>
+            <div class="copy">
+                <h3>Blazingly fast</h3>
+                <p>The latest player is the swiftest one ever. We rebuilt it from the ground up to be simpler, lighter, and smarter, with a focus on improving connection and load speeds.</p>
+            </div>
+        </div>
+
+        <div class="diamond_divider"><b></b></div>
+
+        <div class="accessibility clearfix">
+            <div class="copy">
+                <h3>Amazing accessibility</h3>
+                <p>Fully complying to <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0 AA support, the player plays nice with screen readers and voiceover software, plus creators can add closed captioning and translated subtitles to their videos.</p>
+            </div>
+            <div class="closed_captions">
+                <div class="helios"></div>
+                <ul>
+                    <li></li>
+                    <li class="small"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="inner_wrap video_container video_tools js-video_canvas_spy" data-spy>
+    <h1 class="text_replace player_text flipUpX" data-animate>What can you do with it?</h1>
+    <canvas class="video js-video_canvas" width="1080" height="607"></canvas>
+</div>
+
+<section class="tools content_area overflow_hidden">
+    <div class="sidedock_tools js-sidedock_spy width_wrap" data-spy>
+        <ul>
+            <li class="like">
+                <b class="icon like"></b>
+                <div class="frame"></div>
+                <h3>Like videos</h3>
+                <p>Hit the little heart in the upper right corner of a video to show your appreciation and give the creator a virtual high-five.</p>
+            </li>
+            <li class="watch_later js-watch_later_li">
+                <svg class="icon watch_later js-watch_later_svg" viewBox="0 0 20 20" preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <polyline class="hour-hand" points="9.64,4.68 10.56,4.68 11.28,11.21 8.93,11.21 9.64,4.68"></polyline>
+                    <polyline class="minute-hand" points="14.19,13.65 13.7,14.14 8.58,10.4 10.44,8.5 14.19,13.65"></polyline>
+                    <circle class="stroke" cx="10" cy="10" r="8" stroke="white" stroke-width="1.5"></circle>
+                </svg>
+                <div class="frame"></div>
+                <h3>Watch Later</h3>
+                <p>Boss getting suspicious of your quiet time at work? Click the clock icon to save any Vimeo video to your Watch Later queue.</p>
+            </li>
+            <li class="share">
+                <b class="icon share"></b>
+                <div class="frame"></div>
+                <h3>Share effortlessly</h3>
+                <p>When you see a video that you want others to see, you can email, socialize, and embed all from one place.</p>
+            </li>
+        </ul>
+        <div class="diamond_divider"><b></b><b></b></div>
+    </div>
+    <div class="customize" data-spy>
+        <div class="width_wrap">
+            <h3 class="text_replace fade_up">Customize to your taste</h3>
+            <p>The player is yours to play with. Change its size and color, take out the playbar, add your logo, decide what videos play next, and more.</p>
+
+            
+
+            <style>.player{width:100%;height:100%;background-color:#000;}</style>
+    
+
+
+<div id="clip_53444911" class="player_container js-player_container_53444911" style="width:960px;height:540px;" >
+    <div id="player_1_54f5c8ae07c31" class="player js-player " data-config-url="https://player.vimeo.com/video/53444911/config?badge=0&amp;color=f45259&amp;context=about.player&amp;default_to_hd=1&amp;s=390698433bd040a609fbc9e7eff6a41d6f63abdd" data-fallback-url="//player.vimeo.com/video/53444911/fallback?js" style=""  data-clip-id="53444911">
+        <noscript>
+                            <object id="flash-object" type="application/x-shockwave-flash" width="100%" height="100%" data="//player.vimeo.com/moog/53444911">
+                    <param name="flashvars" value="clip_id=53444911&amp;api=1&amp;moogaloop_type=moogaloop_local&amp;noscript">
+                    <param name="movie" value="//player.vimeo.com/moog/53444911?noscript">
+                    <param name="allowfullscreen" value="true">
+                    <param name="allowscriptaccess" value="always">
+                    <param name="wmode" value="opaque">
+                    <param name="quality" value="high">
+                    <param name="scalemode" value="noscale">
+                    <param name="bgcolor" value="#000000">
+                                <div class="fallback"><iframe src="//player.vimeo.com/video/53444911/fallback?noscript" frameborder="0"></iframe></div>
+                            </object>
+                    </noscript>
+    </div>
+</div>
+
+
+            <div id="slider">
+                <a href="#" class="more js-slider_more" title="More"></a>
+                <div class="track">
+                    <div class="handle pulse js-slider_handle"></div>
+                </div>
+                <ul class="js-slider_track">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <a href="#" class="less js-slider_less" title="Less"></a>
+            </div>
+        </div>
+        <div class="triangle_overlay"></div>
+    </div>
+    <div class="creator_services js-creator_spy width_wrap" data-spy>
+        <div class="vod cs_item">
+            <div class="vod_background"></div>
+            <div class="vod_triangle"></div>
+            <h3>Vimeo On Demand</h3>
+            <p>You can purchase works through Vimeo On Demand right from the player &ndash; the lion&rsquo;s share of proceeds go directly to the creator.</p>
+        </div>
+        <div class="tip_jar cs_item js-tip_jar_element">
+            <div class="coin_wrapper">
+                <canvas class="js-tipjar_canvas tip_jar_coins" width="100" height="100"></canvas>
+            </div>
+            <div class="background_heart js-background_heart">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="70px" width="70px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                    <g>
+                        <path fill="#FFFFFF" d="M74.996,14C61.635,14,51.388,24.714,50,26.234C48.612,24.714,38.365,14,25.006,14
+                            C10.188,14,0,27.67,0,39.35c0,11.632,11.42,20.508,20.223,25.084C28.573,68.771,48.041,81.387,50,87
+                            c1.959-5.613,21.428-18.229,29.777-22.566C88.58,59.857,100,50.981,100,39.35C100,27.67,89.812,14,74.996,14z"></path>
+                    </g>
+                </svg>
+            </div>
+            <div class="heart js-expand_heart">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="70px" width="70px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                    <g>
+                        <path fill="#FFFFFF" d="M74.996,14C61.635,14,51.388,24.714,50,26.234C48.612,24.714,38.365,14,25.006,14
+                            C10.188,14,0,27.67,0,39.35c0,11.632,11.42,20.508,20.223,25.084C28.573,68.771,48.041,81.387,50,87
+                            c1.959-5.613,21.428-18.229,29.777-22.566C88.58,59.857,100,50.981,100,39.35C100,27.67,89.812,14,74.996,14z"></path>
+                    </g>
+                </svg>
+            </div>
+            <h3>Tip Jar <small>Coming Soon</small></h3>
+            <p>Tip Jar enables Vimeo Plus and PRO members to receive small cash payments from people who dig their videos.</p>
+        </div>
+    </div>
+</section>
+<section class="cta js-cta_spy stage content_area" data-spy>
+    <div class="width_wrap">
+        <h1 class="text_replace player_text flipUpX" data-animate>It’s your turn to start playing.</h1>
+        <div class="diamond_divider">
+            <a href="/upload" class="btn">
+                <p class="cta_text">Upload a video</p>
+                <div class="iconify_up_b"></div>
+            </a>
+            <b></b>
+            <a href="/staffpicks" class="btn watch_some_videos">
+                <p class="cta_text">Go watch videos</p>
+                <div class="channel viconify_channel_b"></div>
+            </a>
+        </div>
+    </div>
+    <div class="triangle_overlay">
+        <canvas class="triangle_background js-triangle_background"></canvas>
+    </div>
+</section>
+<section class="inner_wrap thanks" data-spy>
+    <h3>Thanks to</h3>
+    <div class="thankee">
+        <h4><a href="/mattdivito">Matthew DiVito</a></h4>
+        <p>For use of the video <a href="/53444911">THAT WILL BE THE DAY</a></p>
+    </div>
+    <div class="thankee">
+        <h4><a href="/donialiechti">Donia Liechti</a></h4>
+        <p>For use of the video <a href="/64334084">STRANDED</a></p>
+    </div>
+</section>
+                </div>
+
+                
+                <footer id="site_footer">
+    <div class="container" role="navigation">
+        <h3 class="offstage">Additional Links</h3>
+        <section>
+            <h4 class="blue">Vimeo</h4>
+            <ul>
+                <li>
+                    <a href="/about">
+                        About Vimeo                    </a>
+                </li>
+                <li>
+                    <a href="/blog">
+                        Vimeo Blog                    </a>
+                </li>
+                <li>
+                    <a href="/help/guidelines">
+                    Vimeo Guidelines                    </a>
+                </li>
+                <li>
+                    <a href="https://developer.vimeo.com">
+                        Developers                    </a>
+                </li>
+                <li>
+                    <a href="/jobs">
+                        Jobs                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h4 class="yellow">Help</h4>
+            <ul>
+                <li>
+                    <a href="/help">
+                        Help Center                    </a>
+                </li>
+                <li>
+                    <a href="/help/basics">
+                        Basics                    </a>
+                </li>
+                <li>
+                    <a href="/videoschool">
+                        Video School                    </a>
+                </li>
+                <li>
+                    <a href="/help/faq">
+                        FAQ                    </a>
+                </li>
+                <li>
+                    <a href="/forums">
+                        Forums                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h4 class="green">More</h4>
+            <ul>
+                <li>
+                    <a href="/ondemand">
+                        On Demand                    </a>
+                </li>
+                <li>
+                    <a href="/everywhere">
+                        Everywhere                    </a>
+                </li>
+                <li>
+                    <a href="/upload" data-ga-event-click="footer|upload">
+                        Upload                    </a>
+                </li>
+                <li>
+                    <a href="/site_map">
+                        Site Map                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h4 class="pink">Upgrade</h4>
+            <ul>
+                <li>
+                    <a href="/plus" data-ga-conversion-id="9295">
+                        Vimeo Plus                    </a>
+                </li>
+                <li>
+                    <a href="/pro" data-ga-conversion-id="9296">
+                        Vimeo PRO                    </a>
+                </li>
+                <li>
+                    <a href="/business" data-ga-conversion-id="9297">
+                        Vimeo for Business                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <aside id="footer_tip" class="footer_tip medium-8 column" aria-live="polite">
+    <h4>Did you know?</h4>
+    <button type="button" class="iconify_resume_b get_tip" id="get_tip"><span class="offstage">Show another tip</span></button>
+    <p class="active">Learn how to <a href="/videoschool/lesson/179/shooting-winter-action-sports">capture winter action sports</a> with techniques that can give your videos a totally cool look. Cool, get it? Because of winter.</p>
+    <p>Are you a creator? Sell your work, your way with <a href="/ondemand">Vimeo On Demand</a>, our open self-distribution platform.</p>
+</aside>
+    </div>
+</footer>
+            </div>
+
+            <div class="legal_footer_container">
+    <div id="footers_footer">
+        <div id="legal">
+            <p>TM + &copy; 2015 Vimeo, LLC. All rights reserved.</p>
+            <ul class="inline_list dot_list">
+                <li>
+                    <a href="/terms" title="Terms &amp; Conditions">
+                        Terms                    </a>
+                </li>
+                <li>
+                    <a href="/privacy" title="Privacy Policy">
+                        Privacy                    </a>
+                </li>
+                <li>
+                    <a href="/dmca" title="Copyright Information">
+                        Copyright                    </a>
+                </li>
+                <li>
+                    <a href="/cookie_policy" title="Learn more about how Vimeo uses cookies">
+                        Cookies                    </a>
+                </li>
+
+                            </ul>
+            <p class="with_love">
+                Made with <a href="/love" class="iconify loveo" title="Love">k</a> in <abbr title="New York City">NYC</abbr>.            </p>
+        </div>
+
+            <span class="contentfilter iconify_lens_b">Filter: <a href="javascript:void(0)" title="Change your Content Filter preference">None</a></span>
+
+    <div class="hide">
+        <div id="contentfilter">
+            <header>
+                <h6>Set your content preferences</h6>
+            </header>
+            <div class="contentfilter_selector">
+                <form action="/settings/contentrating" id="content_ratings_form" class="content_filter_selector" method="post">
+                    <p class="explanation">Your content preferences apply to any Vimeo videos you view. Learn more about content preferences in our <a href="/help/faq/managing-your-account/content-filter-preferences#how-can-i-filter-out-mature-explicit-and-unrated-content-on-vimeo">FAQ</a>.</p>
+                    <div class="field_wrapper">
+                        <label>
+                            <input type="radio" id="contentrating_showall" name="y" value="127" class="validate-reqchk-byname" checked="checked">
+                            Show me everything                        </label>
+                    </div>
+                    <div class="field_wrapper">
+                        <label>
+                            <input type="radio" id="contentrating_explicit" name="y" value="7" class="validate-reqchk-byname" >
+                            Don&rsquo;t show mature content                        </label>
+                    </div>
+                                        <div class="field_wrapper">
+                        <label>
+                            <input type="radio" id="contentrating_choose" name="y" class="validate-reqchk-byname" >
+                            Let me choose                        </label>
+                    </div>
+                    <fieldset>
+                        <label>
+                            <input type="checkbox" id="mc_unrated_content" name="explicit_ratings[]" value="1" class="validate-reqchk-byname" >
+                            Don&rsquo;t show unrated                        </label>
+                        <label>
+                            <input type="checkbox" id="mc_bad_words" name="explicit_ratings[]" value="8" class="validate-reqchk-byname" >
+                            Don&rsquo;t show profanity / sexually suggestive content                        </label>
+                        <label>
+                            <input type="checkbox" id="mc_drugs_alcohol" name="explicit_ratings[]" value="16" class="validate-reqchk-byname" >
+                            Don&rsquo;t show drugs / alcohol                        </label>
+                        <label>
+                            <input type="checkbox" id="mc_violence" name="explicit_ratings[]" value="32" class="validate-reqchk-byname" >
+                            Don&rsquo;t show violence                        </label>
+                        <label>
+                            <input type="checkbox" id="mc_nudity" name="explicit_ratings[]" value="64" class="validate-reqchk-byname" >
+                            Don&rsquo;t show nudity                        </label>
+                    </fieldset>
+                    <input type="submit" id="submit_content_filter" name="submit_content_filter" class="btn" value="Apply changes" data-submit-text="Applying Changes…" disabled>
+                </form>
+            </div>
+        </div>
+    </div>
+        <span class="language">Language: <a href="#language" data-lightbox data-lightbox-options="" title="Choose a Different Language">English</a></span>
+
+<div class="hide">
+    <aside id="language" class="js-language_selector">
+                    <header>
+                <h6>Choose a Different Language</h6>
+            </header>
+            <div class="language_selector">
+                <div class="iconify_globe_b"></div>
+                <p class="language_heading">Vimeo is available in the following languages:</p>
+                <ul class="styled bullet_list">
+                                            <li class="selected">
+                            <a href="javascript:void(0)" data-language="en">English</a><span class="tip">&larr; Your current language</span>                        </li>
+                                            <li>
+                            <a href="javascript:void(0)" data-language="es">Español</a>                        </li>
+                                            <li>
+                            <a href="javascript:void(0)" data-language="de-DE">Deutsch</a>                        </li>
+                                            <li>
+                            <a href="javascript:void(0)" data-language="fr-FR">Français</a>                        </li>
+                                            <li>
+                            <a href="javascript:void(0)" data-language="ja-JP">日本語</a>                        </li>
+                                    </ul>
+            </div>
+            </aside>
+</div>
+    </div>
+</div>
+        </div>
+        
+        
+        
+        
+<script>
+            // Analytics Setup
+        var _comscore = _comscore || [],
+            _gaq = _gaq || [];
+
+        _comscore.push({
+            c1: "2",
+            c2: "10348289"
+        });
+
+        _gaq.push(['_require', 'inpage_linkid', '//www.google-analytics.com/plugins/ga/inpage_linkid.js']);
+        _gaq.push(['_setAccount', "UA-76641-8"]);
+        _gaq.push(['_gat._anonymizeIp']);
+
+                    _gaq.push(['_setDomainName', 'vimeo.com']);
+        
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_setAllowAnchor', true]);
+
+                    _gaq.push(
+                ['player._setAccount', "UA-76641-35"],
+                ['player._setDomainName', 'player.vimeo.com']
+            );
+        
+        function trackHouseAd() {
+            var ga_l = document.location;
+            var ga_r = document.referrer;
+            var ga_s = ga_l.search;
+
+            if (ga_s.indexOf('house_ad') > -1) {
+                var house_ad_value = ga_s.match(/house_ad=([^&]+)/)[1];
+
+                _gaq.push(['_trackEvent', 'engagement:house-ad', house_ad_value, ga_r, undefined, true]);
+                _gaq.push(['_setCustomVar', 8, 'house_ad', house_ad_value, 1]);
+            }
+        }
+
+        trackHouseAd();
+
+        
+        _gaq.push(['_setCustomVar', 1, 'user_status', 'logged_out', 3]);
+        _gaq.push(['_setCustomVar', 4, 'language', 'en', 3]);
+        _gaq.push(['_setCustomVar', 3, 'ms', '0', 1]);
+        _gaq.push(['_setCustomVar', 10, 'vuid', document.cookie.replace(/(?:(?:^|.*;\s*)vuid\s*\=\s*([^;]*).*$)|^.*$/, "$1"), 1]);
+
+        
+        _gaq.push(['_trackPageview']);
+
+        
+            
+    var CSS_DIR = 'https://f.vimeocdn.com/styles/css_opt/',
+        JS_DIR = 'https://f.vimeocdn.com/js_opt/',
+        IMAGE_DIR = 'https://f.vimeocdn.com/images_v6/',
+                BUILD_HASH = '25213',
+        vimeo = vimeo || {};
+
+    vimeo.app_version = 'v6';
+    vimeo.domain = '.vimeo.com';
+    vimeo.url = 'vimeo.com';
+    vimeo.xsrft = 'b0592fc2c38d6cd9ebd301945d84f1e3.0';
+    vimeo.cur_user = null;
+    vimeo.config = {};
+    vimeo.party_pooped = null;
+
+    
+    
+    var localeConfig = {
+        'Date': {
+            months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+            months_abbr: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+            days: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            days_abbr: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+
+            // Culture's date order: MM/DD/YYYY
+            dateOrder: ['date', 'month', 'year'],
+            shortDate: '%d/%m/%Y',
+            shortTime: '%I:%M%p',
+            AM: 'AM',
+            PM: 'PM',
+            firstDayOfWeek: 0,
+
+            // Date.Extras
+            ordinal: function(dayOfMonth){
+                return dayOfMonth;
+            }
+        },
+        'DatePicker': {
+            select_a_time: "Select a time",
+            use_mouse_wheel: "Use the mouse wheel to quickly change value",
+            time_confirm_button: "OK",
+            apply_range: "Apply",
+            cancel: "Cancel",
+            week: "Wk"        },
+                'Number': {
+            decimal: '.',
+            group: ',',
+            currency: {
+                prefix: '$'
+            }
+        },
+        'FormValidator': {"required":"This field is required.","requiredChk":"This field is required."}    };
+
+    var fullLocale = '';
+
+    
+    var Copy = {
+        translate: function(key, plural, replacements) {
+            var translation = typeof this.dict[key] != 'object' ? this.dict[key] : (plural ? this.dict[key].plural : this.dict[key].singular);
+            if (typeof replacements === 'object') {
+                translation = this.substitute(translation, replacements);
+            }
+            return translation;
+        },
+        substitute: function(string, object) {
+            if (!string) {
+                return;
+            }
+            if (typeof string.substitute !== 'undefined') {
+                return string.substitute(object);
+            }
+            else {
+                return string.replace(/\\?\{([^{}]+)\}/g, function(match, name) {
+                    if (match.charAt(0) == '\\') return match.slice(1);
+                    return (object[name] != null) ? object[name] : '';
+                });
+            }
+        },
+        dict: {"did_you_mean_email":"Did you mean <em>{SUGGEST}<\/em>?","email_password_mismatch":"Email and password do not match","just_now":"just now","seconds_ago":{"singular":"{COUNT} second ago","plural":"{COUNT} seconds ago"},"minutes_ago":{"singular":"{COUNT} minute ago","plural":"{COUNT} minutes ago"},"hours_ago":{"singular":"{COUNT} hour ago","plural":"{COUNT} hours ago"},"open_comment_box":"Add new comment instead &raquo;","url_unavailable":"Sorry, this url is unavailable.","unsaved_changes_generic":"You have unsaved changes, are you sure you wish to leave?","add":"Add","remove":"Remove","select":"Select","no_followers_for_letter":"You don&rsquo;t follow anyone that begin with the letter &ldquo;{PAGE_LETTER}&rdquo;","share_limit_reached":"You have reached the maximum number of users to share with.","old_code":"Use old embed code","new_code":"Use new embed code","at_least_one":"There must be at least one user.","available":"Available","unavailable":"Unavailable","browse_error_generic":"Sorry, there was an error","browse_error_no_videos":"Sorry, no videos found","follow":"Follow","following":"Following","unfollow":"Unfollow","unfollowing":"Unfollowing","count_comments":{"singular":"{COUNT} comment","plural":"{COUNT} comments"},"first_comment":"Be the first to comment&hellip;","no_comments_for_you":"Forbidden. You cannot post comments on this page.","oops":"Oops!","player_try_again":"That wasn't supposed to happen. Please try again in a few minutes.","duration_input_min_duration":"The duration cannot be less than {MIN_DURATION}.","duration_input_max_duration":"The duration cannot be greater than {MAX_DURATION}.","duration_input_invalid_characters":"0-9 and : are the only acceptable inputs.","close":"Close","expand":"Expand","loading":"Loading...","top":"top","advanced_search":"Advanced Search","no_suggestions":"No suggestions","recent_searches":"Recent Searches","search_all":"Search All of Vimeo"}    };
+</script>
+
+    <script src="https://f.vimeocdn.com/js_opt/vimeo/controllers/player/player_manager.min.js?30499b51"></script>
+    <script>
+        if (typeof playerAssetUrls !== 'undefined') {
+                            PlayerManager.run(playerAssetUrls);
+                    }
+    </script>
+
+    <script src="https://f.vimeocdn.com/js_opt/logging_combined.min.js?eebf936a"></script>
+    <script src="https://f.vimeocdn.com/js_opt/global_combined.min.js?1f813668"></script>
+    <script src="https://f.vimeocdn.com/js_opt/player_page/player_page_combined.min.js?4cc73727"></script>
+
+    <script async src="https://sb.scorecardresearch.com/beacon.js"></script>
+    <script async src="https://stats.g.doubleclick.net/dc.js"></script>
+    <script>
+        function onVimeoDomReady(e) {
+            
+                            
+                PlayerManager.dispatchReadySignals();
+            
+                    }
+
+                    if ('addEvent' in window) {
+                window.addEvent('domready', onVimeoDomReady);
+            }
+            else {
+                onVimeoDomReady();
+            }
+            </script>
+
+    </body>
+</html>
