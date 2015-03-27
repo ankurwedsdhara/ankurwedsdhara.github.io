@@ -638,6 +638,7 @@ a.thumb_read_more:hover{
 }
 .about_pic_container:hover span.about_picframe{
 	opacity: 0.7;
+	position:middle;
 }
 /*---------------------------*/
 /* 5-5. CAROUSEL 	 */
