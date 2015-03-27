@@ -562,7 +562,7 @@ span.names_titles{
 	padding:0px 10px 0 10px;
 }
 .about_pic_container{
-	position:relative;
+	position:absolute;
 }
 .about_pic{
 	background-color:#000000;
@@ -638,7 +638,6 @@ a.thumb_read_more:hover{
 }
 .about_pic_container:hover span.about_picframe{
 	opacity: 0.7;
-	position:middle;
 }
 /*---------------------------*/
 /* 5-5. CAROUSEL 	 */
@@ -1753,7 +1752,7 @@ span.swirl_right_transparent{
 	.about_pic_container:hover .about_social{
 	opacity: 1;
 	transform: translateY(100%);
-	-webkit-transform:translateY(100%)
+	-webkit-transform:translateY(200%)
 	}
 	.full_width_carousel h2{
 	text-align:center;
