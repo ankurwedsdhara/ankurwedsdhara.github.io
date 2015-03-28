@@ -208,11 +208,11 @@ h1, h2, h3, h4, h5, h6, ul#main_menu li a, .title_front, .title_date, .title_und
 .left13{
 	width:340px;
 	float:left;
-	margin:0 40px 80px 0;
+	margin:0 40px 80px 20%;
 }
 .left13_last{
 	width:340px;
-	float:right;
+	float:left;
 	margin:0 0 80px 0;
 }
 .left14_first{
