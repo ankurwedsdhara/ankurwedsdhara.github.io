@@ -49,7 +49,7 @@
 	line-height:20px;
 }
 .tp-info img, .tp-info a{ width:auto; display:inline-block; float:left;}
-.tp-info a {margin:0 0 0 15px;}
+.tp-info a {margin:0 0 0 40%;}
 .tp-info a:hover{opacity:0.6;}
 .tp-info span{ text-align:center; display:block; padding:0px 0 20px 0; font-size:18px; font-weight:400;}
 .tp-title {
