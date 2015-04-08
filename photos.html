@@ -181,7 +181,6 @@ Will upload more pics soon...</p>
           <div class="clear"></div>
         </div>  <!--end of full width-->
       </div> <!--end of about content-->   
-	
    
    <div class="footer">
       <div class="full_width_centered">
@@ -207,59 +206,74 @@ Will upload more pics soon...</p>
    </div>
 
 </div>
-<!-- jQuery -->
-	<script type="text/javascript" src="js/ios-orientationchange-fix.js"></script>
-	<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
-	<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/effects.js"></script>
-		<script type="text/javascript" src="js/jquery.stapel.js"></script>
-		<script type="text/javascript">	
-			$(function() {
-               "use strict";
-				var $grid = $( '#tp-grid' ),
-					$name = $( '#name' ),
-					$close = $( '#close' ),
-					$loader = $( '<div class="loader"><i></i><i></i><i></i><i></i><i></i><i></i><span>Loading...</span></div>' ).insertBefore( $grid ),
-					stapel = $grid.stapel( {
-						onLoad : function() {
-							$loader.remove();
-						},
-						onBeforeOpen : function( pileName ) {
-							$name.html( pileName );
-						},
-						onAfterOpen : function( pileName ) {
-							$close.show();
-						}
-					} );
 
-				$close.on( 'click', function() {
-					$close.hide();
-					$name.empty();
-					stapel.closePile();
+	<!-- jQuery -->
+	<script type="text/javascript" src="js/ios-orientationchange-fix.js"></script>
+	<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.swipebox.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$( '.swipebox' ).swipebox( {
+				useCSS : true, // false will force the use of jQuery for animations</span>
+				useSVG : true, // false to force the use of png for buttons</span>
+				initialIndexOnArray : 0, // which image index to init when a array is passed</span>
+				hideCloseButtonOnMobile : false, // true will hide the close button on mobile devices</span>
+				hideBarsDelay : 0, // delay before hiding bars on desktop</span>
+				videoMaxWidth : 1140, // videos max width</span>
+				beforeOpen: function() {}, // called before opening</span>
+				afterOpen: null, // called after opening</span>
+				afterClose: function() {}, // called after closing</span>
+				loopAtEnd: true // true will return to the first image after the last image is reached</span>
+			} );
+		} );
+	</script>
+	
+	<script type="text/javascript" src="js/effects.js"></script>
+	<script type="text/javascript" src="js/jquery.stapel.js"></script>
+	<script type="text/javascript">	
+		$(function() {
+		   "use strict";
+			var $grid = $( '#tp-grid' ),
+				$name = $( '#name' ),
+				$close = $( '#close' ),
+				$loader = $( '<div class="loader"><i></i><i></i><i></i><i></i><i></i><i></i><span>Loading...</span></div>' ).insertBefore( $grid ),
+				stapel = $grid.stapel( {
+					onLoad : function() {
+						$loader.remove();
+					},
+					onBeforeOpen : function( pileName ) {
+						$name.html( pileName );
+					},
+					onAfterOpen : function( pileName ) {
+						$close.show();
+					}
 				} );
 
+			$close.on( 'click', function() {
+				$close.hide();
+				$name.empty();
+				stapel.closePile();
 			} );
-		</script>
+
+		} );
+	</script>
 <!--
 <script src="js/jquery-2.0.3.js"></script>
 -->
-<script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <script type="text/javascript" src="js/jquery.arctext.js"></script>
-  
-<!-- DropDownMenu -->
-<script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" charset="utf-8">
 var $ = jQuery.noConflict();
   $(window).load(function() { 
 	$(function() {
 	    "use strict"; 
-		$(".swipebox").swipebox();
 		var $footernames = $('.footer_names').hide();
 		$footernames.show().arctext({radius: 120, dir: -1});
 	});
   });
 </script>
+
+<!-- DropDownMenu -->
+<script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript">
 var main_menu=new main_menu.dd("main_menu");
 main_menu.init("main_menu","menuhover");
