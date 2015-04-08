@@ -251,7 +251,10 @@ var $ = jQuery.noConflict();
   $(window).load(function() { 
 	$(function() {
 	    "use strict"; 
-		$(".swipebox").swipebox();
+		$(".swipebox").swipebox({
+			useCSS : true, // false will force the use of jQuery for animations
+			hideBarsDelay : 0, // 0 to always show caption and action bar
+			});
 		var $footernames = $('.footer_names').hide();
 		$footernames.show().arctext({radius: 120, dir: -1});
 	});
