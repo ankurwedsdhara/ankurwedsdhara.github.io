@@ -129,7 +129,13 @@
 						} );
 					} );
 
-					index = $elem.index( $( this ) );
+					//index = $elem.index( $( this ) );
+					for(var i = 0; i < elements.length; i++)
+					{
+						if ( $( this ).attr( 'href' )  == elements[i].href) {
+							index = i;
+						}
+					}
 					event.preventDefault();
 					event.stopPropagation();
 					ui.target = $( event.target );
