@@ -200,7 +200,7 @@ var $ = jQuery.noConflict();
    $bestman.show().arctext({radius: 80});
    $footernames.show().arctext({radius: 120, dir: -1});
 
-   $('#defaultCountdown').countdown({until: new Date(2015, 5, 5, 20), format: 'D-H-M-S', timezone: +330});		
+   $('#defaultCountdown').countdown({until: new Date(2015, 5, 5, 20), format: 'D-H-M-S', timezone: +330, onExpiry: function(){$( ".centered_title" ).text('GETTING MARRIED!!!');}});		
 
   });
 </script>
